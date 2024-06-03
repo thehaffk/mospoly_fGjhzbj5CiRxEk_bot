@@ -7,3 +7,4 @@ wheel~=0.38.0
 cryptography~=42.0.4
 keyring~=23.5.0
 setuptools~=65.5.1
+apscheduler
