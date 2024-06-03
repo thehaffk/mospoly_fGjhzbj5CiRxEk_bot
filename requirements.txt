@@ -1,0 +1,9 @@
+aiosqlite~=0.20.0
+aiogram~=2.25.1
+pip~=23.3
+attrs~=23.2.0
+zipp~=1.0.0
+wheel~=0.38.0
+cryptography~=42.0.4
+keyring~=23.5.0
+setuptools~=65.5.1
