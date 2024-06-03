@@ -52,7 +52,7 @@ async def delete_task(user_id, task_id):
 
 async def get_due_tasks():
     async with aiosqlite.connect('tasks.db') as db:
-        cursor = await db.execute('SELECT user_id, description, due_date, id FROM tasks WHERE due_date = ?',
+        cursor = await db.execute('SELECT user_id, description, due_date, id FROM tasks WHERE due_date >= ?',
                                   (datetime.datetime.now().strftime('%Y-%m-%d %H:%M'),))
         tasks = await cursor.fetchall()
         return tasks

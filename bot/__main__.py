@@ -125,11 +125,15 @@ async def on_delete(message: types.Message) -> None:
 async def notify_due_tasks():
     tasks = await db.get_due_tasks()
     for task in tasks:
-        _user_id, description, due_date, _task_id = task
-        await bot.send_message(_user_id, f"Задача c описанием "
-                                         f"\n```'{description}'```\n"
-                                         f" должна быть выполнена до {due_date}!")
-        await db.delete_task(user_id=_user_id, task_id=_task_id)
+        try:
+            _user_id, description, due_date, _task_id = task
+            await bot.send_message(_user_id, f"Задача c описанием "
+                                             f" '{description}' "
+                                             f" должна быть выполнена до {due_date}!")
+            await db.delete_task(user_id=_user_id, task_id=_task_id)
+        except Exception as e:
+            logging.error(e)
+            continue
 
 
 async def main():
